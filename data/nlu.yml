@@ -1,0 +1,179 @@
+---
+version: "3.1"
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+  - intent: start
+    examples: |
+      - /start
+      - start
+  - intent: scan_qr
+    examples: |
+      - /scan_qr
+      - scan_qr
+  - intent: select_order
+    examples: |
+      - /select_order
+      - select_order
+  - intent: trip_start
+    examples: |
+      - /trip_start
+      - trip_start
+  - intent: ask_location
+    examples: |
+      - /ask_location
+      - ask_location
+  - intent: pob
+    examples: |
+      - /pob
+      - pob
+  - intent: pod
+    examples: |
+      - /pod
+      - pod
+  - intent: barcode
+    examples: |
+      - /barcode
+      - barcode
+  - intent: inform
+    examples: |
+      - [krupa](username)
+      - [devi](username)
+      - [10](lpn_count)
+      - [texto](picture)
+      - [download.png](picture)
+      - name is [devi](username)
+      - [devi](username)
+      - [5](lpn_count)
+      - [img.jpg](picture)
+      - [img.jpeg](picture)
+      - [img.png](picture)
+      - name is [devi](username)
+
+  - intent: affirm
+    examples: |
+      - Yes
+      - Sure
+      - Okay
+      - I agree
+  - intent: deny
+    examples: |
+      - No
+      - Nope
+      - I don't want to
+      - Cancel
+  - intent: dummy
+    examples: |
+      - dummy
+      - /dummy
+
+  - intent: get_location
+    examples: |
+      - /get_location
+      - get_location
+
+  - regex: username
+    examples: |
+      - ^[A-Za-z]+$
+  - regex: lpn_count
+    examples: |
+      - ^\\d+$
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - /bye
+      - /stop
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+  - intent: ask_scan_barcode
+    examples: |
+      - Scan QR
+      - QR code
+      - Start scanning
+      - Use QR scanner
+  - intent: scan_barcode
+    examples: |
+      - Scan barcode
+      - Start scanning
+      - Use barcode scanner
+  - intent: show_barcode
+    examples: |
+      - Show me the barcode
+      - Display the scanned barcode
+      - I want to see the barcode
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?

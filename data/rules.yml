@@ -1,0 +1,103 @@
+---
+version: "3.1"
+rules:
+
+  - rule: Greet the user in Telegram
+    steps:
+      - intent: start
+      - action: action_display_details
+      - intent: select_order
+      - action: action_handle_button_click
+      - action: action_display_order_details
+      - action: utter_aoc
+
+
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: Trip start
+    steps:
+      - intent: trip_start
+      - action: utter_trip_start
+
+  - rule: Get Location Details
+    steps:
+      - intent: get_location      
+      - action: location_form
+      - active_loop: location_form
+
+  - rule: Submit Location form
+    condition:
+      - active_loop: location_form
+    steps:
+      - action: location_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_get_location
+      - action: utter_complete_location
+
+
+  - rule: Activate POB form
+    steps:
+      - intent: pob
+      - action: pob_form
+      - active_loop: pob_form
+  - rule: Activate POD form
+    steps:
+      - intent: pod
+      - action: pod_form
+      - active_loop: pod_form
+
+  - rule: Submit POB form
+    condition:
+      - active_loop: pob_form
+    steps:
+      - action: pob_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_say_data
+      - action: utter_complete_pob
+      - action: action_reset_slots
+
+  - rule: Submit POD form
+    condition:
+      - active_loop: pod_form
+    steps:
+      - action: pod_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_say_data
+      - action: utter_complete_pod
+      - action: action_complete_order
+      - action: utter_order_completed
+      - action: action_reset_slots
+
+  - rule: scan qr
+    steps:
+      - intent: ask_scan_barcode
+      - action: utter_ask_scan_barcode
+  - rule: Activate qr form
+    steps:
+      - intent: barcode
+      - action: barcode_form
+      - active_loop: barcode_form
+  - rule: Submit qr form
+    condition:
+      - active_loop: barcode_form
+    steps:
+      - action: barcode_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_scan_qr_code
+      - action: utter_barcode_scanned
+      - action: action_reset_all_slots
